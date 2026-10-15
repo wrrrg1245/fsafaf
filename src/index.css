@@ -1,0 +1,646 @@
+@import "tailwindcss";
+
+/* === 1. 基础重置与字体 === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #050505;
+  color: white;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  outline: none;
+}
+
+/* === 2. 头部导航 === */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-link img {
+  height: 40px;
+  width: auto;
+}
+
+.certification-badge {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #000;
+  padding: 0;
+}
+
+.certification-badge img {
+  height: 100%;
+  display: block;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: 0.3s;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+nav a:hover, nav a.active {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.kefu-btn i {
+  font-size: 18px;
+}
+
+/* 语言切换 */
+.lang-switch-container {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 4px;
+  color: #ddd;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 150%;
+  right: 0;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid #333;
+  border-radius: 6px;
+  list-style: none;
+  padding: 5px;
+  min-width: 100px;
+  z-index: 200;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.lang-dropdown li {
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lang-dropdown li:hover {
+  background: #333;
+}
+
+/* === 3. Banner === */
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-height: 850px;
+  overflow: hidden;
+  background: #000;
+}
+
+.slider-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.layer-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.layer-float {
+  position: absolute;
+  z-index: 5;
+  object-fit: contain;
+}
+
+/* 动画元素定位 (PC) */
+.item-char-1 {
+  width: 12%;
+  bottom: 20%;
+  right: 60%;
+  margin-right: -100px;
+  z-index: 2;
+}
+
+.item-text-1 {
+  width: 25%;
+  top: 25%;
+  left: 50%;
+  margin-left: 50px;
+  z-index: 3;
+  animation: floatY 4s infinite ease-in-out;
+}
+
+.item-char-2 {
+  width: 40%;
+  bottom: 35%;
+  right: 45%;
+  z-index: 3;
+}
+
+.item-text-2 {
+  width: 50%;
+  top: 10%;
+  left: 40%;
+  z-index: 2;
+  animation: floatY 4s infinite ease-in-out 0.5s;
+}
+
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 44px;
+  height: 80px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 20;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* === 4. 底部互动组与福利说明框 === */
+.banner-bottom-section {
+  position: absolute;
+  bottom: 35px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 50;
+  padding: 0 20px;
+}
+
+.action-buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 30px;
+}
+
+.welfare-card {
+  width: 100%;
+  max-width: 820px;
+  background: linear-gradient(135deg, rgba(28, 18, 10, 0.92) 0%, rgba(12, 12, 14, 0.96) 50%, rgba(10, 24, 28, 0.92) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.welfare-card:hover {
+  border-color: rgba(251, 191, 36, 0.75);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 35px rgba(245, 158, 11, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+@keyframes goldShine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.gold-shine-text {
+  background: linear-gradient(90deg, #fef08a 0%, #f59e0b 25%, #fffbeb 50%, #f59e0b 75%, #fef08a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShine 4s linear infinite;
+}
+
+.banner-btn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 240px;
+  height: 64px;
+  background: url('/static/image/anniu.webp') no-repeat center center / 100% 100%;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, filter 0.2s;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.2);
+}
+
+.id-display-text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  user-select: text;
+}
+
+.highlight-id {
+  color: #4db8ff;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* === 5. 特性展示与页脚 === */
+.site-footer {
+  background: #02afa7;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.footer-divider {
+  width: 100%;
+  max-width: 800px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 30px 0;
+}
+
+.copyright {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* === 7. 统一弹窗体系 === */
+.modal-overlay {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  width: 90%;
+  max-width: 360px;
+  padding: 30px 20px;
+  border-radius: 16px;
+  border: 1px solid #333;
+  text-align: center;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.modal-content.light-theme {
+  background: #fff;
+  color: #333;
+}
+
+.modal-overlay.show .modal-content {
+  transform: scale(1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #888;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
+
+.light-theme .close-btn:hover {
+  color: #333;
+}
+
+.modal-title {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.modal-desc {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.kefu-qr, .qr-image {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
+  border-radius: 8px;
+}
+
+/* 弹窗按钮样式 */
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.telegram-btn {
+  background: #229ED9;
+}
+
+.telegram-btn:hover {
+  background: #1b8ec5;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebc59;
+}
+
+.id-row-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.id-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.id-label {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.id-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4db8ff;
+  font-family: monospace;
+}
+
+.copy-btn {
+  background: #02afa7;
+  color: white;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.copy-btn:hover {
+  opacity: 0.9;
+}
+
+.copy-btn:active {
+  transform: scale(0.96);
+}
+
+/* === 8. 移动端适配强化 === */
+@media screen and (max-width: 768px) {
+  header {
+    height: 60px;
+  }
+  .header-content {
+    padding: 0 15px;
+  }
+  .logo-link img {
+    height: 32px;
+  }
+  .certification-badge {
+    display: none;
+  }
+  nav ul {
+    gap: 15px;
+  }
+  nav ul li:first-child {
+    display: none;
+  }
+  .banner-container {
+    height: 100vh;
+    min-height: 650px;
+  }
+  .item-text-1 {
+    width: 50%;
+    top: 30%;
+    left: 30%;
+    margin-left: 0;
+    transform: translateX(-50%);
+  }
+  .item-text-2 {
+    width: 90%;
+    top: 15%;
+    left: 8%;
+    margin-left: 0;
+    transform: translateX(-50%);
+  }
+  .item-char-1 {
+    width: 60%;
+    top: 5%;
+    right: 20%;
+    bottom: 45%;
+    margin-right: 0;
+  }
+  .item-char-2 {
+    width: 90%;
+    left: 50%;
+    bottom: 40%;
+    transform: translateX(-50%);
+    margin-right: 0;
+  }
+  .banner-bottom-section {
+    bottom: 15px;
+    gap: 10px;
+    padding: 0 12px;
+  }
+  .action-buttons-container {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .welfare-card {
+    border-radius: 14px;
+  }
+  .banner-btn-item {
+    width: 100%;
+    max-width: 320px;
+  }
+  .download-btn {
+    width: 100%;
+    height: 55px;
+    font-size: 18px;
+  }
+  .id-display-text {
+    font-size: 14px;
+    padding: 4px 12px;
+    width: 100%;
+    text-align: center;
+  }
+  .arrow {
+    display: none;
+  }
+}

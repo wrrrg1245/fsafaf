@@ -1,0 +1,8 @@
+{
+  "name": "WPK俱乐部 - WePoker官方推荐俱乐部",
+  "description": "加入WPK俱乐部（ID: 8760606），体验WePoker官方推荐的高端德州扑克竞技环境。公平公正、风控严密、24小时在线客服。立即下载WPK，输入ID开启竞技之旅！",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
