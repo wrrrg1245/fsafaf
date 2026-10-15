@@ -20,7 +20,7 @@ const DEFAULT_CONFIG = {
     text_wpk: "WPK下载",
     text_qoytlw: "轻序协同下载(联系客服)",
     text_santiao: "三条(联系客服)",
-    link_wpk: "https://www.wpk.com",
+    link_wpk: "https://web.wpk180.com/",
     link_qoytlw: "https://imlxgp.cn",
     link_santiao: "https://baimokeji.cn/share/index.html?scheme_type=1&qrtype=qr/qiyunxin/person/-PpOKY2BtoRWx9_6fjS7lc3IlPA5cJ-X&verification_code=e5ac2698c445051c0489c927ec5146d3"
   },
@@ -131,7 +131,13 @@ export default function App() {
   const [config, setConfig] = useState(() => {
     try {
       const saved = localStorage.getItem('PUKE444_CONFIG');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed?.banner?.link_wpk === "https://www.wpk.com") {
+          parsed.banner.link_wpk = "https://web.wpk180.com/";
+        }
+        return parsed;
+      }
     } catch {
       // fallback
     }
@@ -272,7 +278,7 @@ export default function App() {
                 </a>
               </li>
               <li>
-                <a href={config.banner?.link_wpk || "https://www.wpk.com"} target="_blank" rel="noreferrer">
+                <a href={config.banner?.link_wpk || "https://web.wpk180.com/"} target="_blank" rel="noreferrer">
                   {I18N[lang]['nav-download']}
                 </a>
               </li>
@@ -393,7 +399,7 @@ export default function App() {
             {/* Button 1: WPK下载 */}
             <div className="banner-btn-item">
               <a
-                href={config.banner?.link_wpk || "https://www.wpk.com"}
+                href={config.banner?.link_wpk || "https://web.wpk180.com/"}
                 className="download-btn"
                 target="_blank"
                 rel="noreferrer"
