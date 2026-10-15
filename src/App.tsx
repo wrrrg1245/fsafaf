@@ -21,7 +21,7 @@ const DEFAULT_CONFIG = {
     text_qoytlw: "轻序协同下载(联系客服)",
     text_santiao: "三条(联系客服)",
     link_wpk: "https://www.wpk.com",
-    link_qoytlw: "https://qoytlw.cn",
+    link_qoytlw: "https://imlxgp.cn",
     link_santiao: "https://baimokeji.cn/share/index.html?scheme_type=1&qrtype=qr/qiyunxin/person/-PpOKY2BtoRWx9_6fjS7lc3IlPA5cJ-X&verification_code=e5ac2698c445051c0489c927ec5146d3"
   },
   qr: {
@@ -480,14 +480,15 @@ export default function App() {
             &times;
           </span>
           <h3 className="modal-title">{config.modal?.service?.title || '联系在线客服'}</h3>
-          <button
-            type="button"
-            onClick={() => openModal('idModal')}
-            className="contact-btn whatsapp-btn mt-4"
+          <a
+            href={config.banner?.link_qoytlw || "https://imlxgp.cn"}
+            target="_blank"
+            rel="noreferrer"
+            className="contact-btn whatsapp-btn mt-4 flex items-center justify-center"
           >
             <i className="fas fa-id-card" />
             <span>{config.banner?.ent_label || '轻序协同'}ID {config.banner?.ent_id || '1314'}</span>
-          </button>
+          </a>
         </div>
       </div>
 
