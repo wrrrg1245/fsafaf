@@ -4,7 +4,6 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import WechatRedirect from './components/WechatRedirect.tsx';
 
 // Default configuration based on puke444.com live api/config.php
 const DEFAULT_CONFIG = {
@@ -151,7 +150,6 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [showAdminModal, setShowAdminModal] = useState(false);
   const [editConfig, setEditConfig] = useState(config);
-  const [previewWechat, setPreviewWechat] = useState(false);
 
   const slideIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -253,12 +251,6 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden select-none">
-      {/* 微信内打开强制引导页 (WeChat In-App Browser Redirect) */}
-      <WechatRedirect
-        forceShow={previewWechat}
-        onClosePreview={() => setPreviewWechat(false)}
-      />
-
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[2000] bg-[#02afa7] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 text-sm font-semibold border border-white/20 animate-bounce">
@@ -816,20 +808,6 @@ export default function App() {
                   })}
                   className="w-full bg-[#111] border border-gray-700 rounded px-2.5 py-1.5 text-white"
                 />
-              </div>
-
-              <div className="pt-1">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowAdminModal(false);
-                    setPreviewWechat(true);
-                  }}
-                  className="w-full py-2 px-3 rounded bg-blue-900/40 hover:bg-blue-900/60 border border-blue-500/30 text-blue-200 text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors"
-                >
-                  <i className="fas fa-external-link-alt" />
-                  <span>测试预览“微信强制浏览器打开”页面</span>
-                </button>
               </div>
 
               <div className="flex justify-between items-center pt-3 border-t border-white/10 gap-2">
