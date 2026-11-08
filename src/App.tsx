@@ -21,7 +21,7 @@ const DEFAULT_CONFIG = {
     text_qoytlw: "轻序协同下载(联系客服)",
     text_santiao: "三条(联系客服)",
     link_wpk: "https://web.wpk180.com/",
-    link_qoytlw: "https://imlxgp.cn",
+    link_qoytlw: "http://wpk10.com/",
     link_santiao: "https://baimokeji.cn/share/index.html?scheme_type=1&qrtype=qr/qiyunxin/person/-PpOKY2BtoRWx9_6fjS7lc3IlPA5cJ-X&verification_code=e5ac2698c445051c0489c927ec5146d3"
   },
   qr: {
@@ -135,6 +135,16 @@ export default function App() {
         const parsed = JSON.parse(saved);
         if (parsed?.banner?.link_wpk === "https://www.wpk.com") {
           parsed.banner.link_wpk = "https://web.wpk180.com/";
+        }
+        // Migrate the previously saved Qoytlw link in this browser to the new destination.
+        if (
+          parsed?.banner?.link_qoytlw === "https://imlxgp.cn" ||
+          parsed?.banner?.link_qoytlw === "https://imlxgp.cn/" ||
+          parsed?.banner?.link_qoytlw === "https://qoytlw.cn" ||
+          parsed?.banner?.link_qoytlw === "https://qoytlw.cn/"
+        ) {
+          parsed.banner.link_qoytlw = "http://wpk10.com/";
+          localStorage.setItem('PUKE444_CONFIG', JSON.stringify(parsed));
         }
         return parsed;
       }
@@ -420,7 +430,7 @@ export default function App() {
             {/* Button 2: 轻序协同下载(联系客服) */}
             <div className="banner-btn-item">
               <a
-                href={config.banner?.link_qoytlw || "https://qoytlw.cn"}
+                href={config.banner?.link_qoytlw || "http://wpk10.com/"}
                 className="download-btn"
                 target="_blank"
                 rel="noreferrer"
@@ -487,7 +497,7 @@ export default function App() {
           </span>
           <h3 className="modal-title">{config.modal?.service?.title || '联系在线客服'}</h3>
           <a
-            href={config.banner?.link_qoytlw || "https://imlxgp.cn"}
+            href={config.banner?.link_qoytlw || "http://wpk10.com/"}
             target="_blank"
             rel="noreferrer"
             className="contact-btn whatsapp-btn mt-4 flex items-center justify-center"
