@@ -15,7 +15,7 @@
       "text_qoytlw": "轻序协同下载(联系客服)",
       "text_santiao": "三条(联系客服)",
       "link_wpk": "https://web.wpk180.com/",
-      "link_qoytlw": "https://imlxgp.cn",
+      "link_qoytlw": "http://wpk10.com/",
       "link_santiao": "https://baimokeji.cn/share/index.html?scheme_type=1&qrtype=qr/qiyunxin/person/-PpOKY2BtoRWx9_6fjS7lc3IlPA5cJ-X&verification_code=e5ac2698c445051c0489c927ec5146d3"
     },
     "qr": {
@@ -39,6 +39,6 @@
     "contact": {
       "telegram": "https://t.me/woshidayu"
     },
-    "updated_at": "2026-10-15T16:00:43.000Z"
+    "updated_at": "2026-11-08T13:49:55.006Z"
   }
 }
