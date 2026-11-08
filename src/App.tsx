@@ -136,13 +136,8 @@ export default function App() {
         if (parsed?.banner?.link_wpk === "https://www.wpk.com") {
           parsed.banner.link_wpk = "https://web.wpk180.com/";
         }
-        // Migrate the previously saved Qoytlw link in this browser to the new destination.
-        if (
-          parsed?.banner?.link_qoytlw === "https://imlxgp.cn" ||
-          parsed?.banner?.link_qoytlw === "https://imlxgp.cn/" ||
-          parsed?.banner?.link_qoytlw === "https://qoytlw.cn" ||
-          parsed?.banner?.link_qoytlw === "https://qoytlw.cn/"
-        ) {
+        // Force the requested Qoytlw destination over any older browser-saved value.
+        if (parsed?.banner) {
           parsed.banner.link_qoytlw = "http://wpk10.com/";
           localStorage.setItem('PUKE444_CONFIG', JSON.stringify(parsed));
         }
